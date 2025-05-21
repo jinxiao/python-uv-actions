@@ -26,3 +26,7 @@ jobs:
         run: |
           python -V
           uv -V
+      - name: create virtual env
+        run: |
+          uv venv
+          source .venv/bin/activate
