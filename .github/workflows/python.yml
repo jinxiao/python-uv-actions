@@ -19,3 +19,4 @@ jobs:
         with:
           python-version: 3.12
           activate-environment: true
+          enable-cache: false
