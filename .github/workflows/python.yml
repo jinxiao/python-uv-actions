@@ -18,3 +18,5 @@ jobs:
         uses: astral-sh/setup-uv@v6
         with:
           activate-environment: true
+      - name: Install Dependencies
+        run: uv sync
