@@ -13,14 +13,3 @@ dependencies = [
     "requests>=2.25.1",
     "numpy>=1.21.0"
 ]
-
-[project.optional-dependencies]
-dev = [
-    "pytest",
-    "black",
-    "flake8"
-]
-
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
