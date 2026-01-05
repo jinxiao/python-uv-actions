@@ -1,0 +1,56 @@
+version: 2
+
+updates:
+  # ------------------------------------------------------------
+  # Python dependencies (requirements.txt / pyproject.toml)
+  # ------------------------------------------------------------
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+      time: "03:00"
+      timezone: "UTC"
+
+    open-pull-requests-limit: 10
+    rebase-strategy: "auto"
+
+    # PR metadata
+    labels:
+      - "dependencies"
+      - "python"
+
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+
+    # ------------------------------------------------------------
+    # Group all Python dependency updates into ONE PR
+    # (aws-lambda-web-adapter style)
+    # ------------------------------------------------------------
+    groups:
+      python-dependencies:
+        patterns:
+          - "*"
+
+    # ------------------------------------------------------------
+    # Ignore risky upgrades (manual review required)
+    # ------------------------------------------------------------
+    ignore:
+      # AWS SDK major bumps usually need manual validation
+      - dependency-name: "boto3"
+        update-types:
+          - "version-update:semver-major"
+
+      - dependency-name: "botocore"
+        update-types:
+          - "version-update:semver-major"
+
+      # Runtime framework majors often need breaking-change review
+      - dependency-name: "fastapi"
+        update-types:
+          - "version-update:semver-major"
+
+      - dependency-name: "uvicorn"
+        update-types:
+          - "version-update:semver-major"
