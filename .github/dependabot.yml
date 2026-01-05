@@ -17,7 +17,7 @@ updates:
 
     # PR metadata
     labels:
-      - "dependencies"
+      - "vulnerabilities"
       - "python"
 
     commit-message:
